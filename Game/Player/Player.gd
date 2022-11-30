@@ -56,6 +56,9 @@ func _physics_process(delta):
 	
 	if not Input.is_action_pressed("Left") and not Input.is_action_pressed("Right"):
 		velocity.x = 0
+	
+	if touching_celling():
+		velocity.y = clamp(velocity.y, 0, jump_force)
 
 func is_on_floor():
 	var fl = $Floor.get_children()
@@ -70,6 +73,13 @@ func touching_wall():
 		if f.is_colliding():
 			return true
 	return false
+	
+func touching_celling():
+	var fl = $Celling.get_children()
+	for f in fl:
+		if f.is_colliding():
+			return true
+	return false	
 
 func touching_wall_left():
 	var fl = $Wall/Left.get_children() 
@@ -101,3 +111,6 @@ func jump():
 	if jump == 0:
 		velocity.y -= jump_force
 		jump = 1
+
+func die():
+	queue_free()

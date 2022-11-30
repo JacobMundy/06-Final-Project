@@ -104,7 +104,7 @@ func Attack():
 		print(4)
 	
 func _on_AttackInt_timeout():
-	print("yes")
+#	print("yes")
 	if attack_direction == 1:
 		$AttackRight.monitoring = true
 		$AttackRight.visible = true

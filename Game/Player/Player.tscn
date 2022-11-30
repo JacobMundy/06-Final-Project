@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Player/Menu.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sono-Bold.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 41
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+font_data = ExtResource( 4 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -103,6 +117,7 @@ cast_to = Vector2( -24.0004, 4.19617e-05 )
 position = Vector2( 184, 184 )
 scale = Vector2( 1, 10 )
 enabled = true
+
 cast_to = Vector2( -24.0005, 4.57764e-05 )
 
 [node name="AttackRight" type="Area2D" parent="."]
@@ -142,3 +157,4 @@ one_shot = true
 
 [connection signal="timeout" from="AttackTimer1" to="." method="_on_AttackTimer1_timeout"]
 [connection signal="timeout" from="AttackCool" to="." method="_on_AttackCool_timeout"]
+

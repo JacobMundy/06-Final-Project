@@ -23,19 +23,19 @@ polygon = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32, 31, -32 )
 position = Vector2( 392, 408 )
 scale = Vector2( 3, 0.850874 )
 enabled = true
-cast_to = Vector2( 0, 56 )
+cast_to = Vector2( 0, 56.4126 )
 
 [node name="Right" type="RayCast2D" parent="Floor"]
-position = Vector2( 440, 408 )
+position = Vector2( 439, 408 )
 scale = Vector2( 3, 0.847585 )
 enabled = true
-cast_to = Vector2( 0, 56 )
+cast_to = Vector2( 0, 56.6315 )
 
 [node name="Center" type="RayCast2D" parent="Floor"]
 position = Vector2( 416, 408 )
 scale = Vector2( 3, 1.15104 )
 enabled = true
-cast_to = Vector2( 0, 41.7015 )
+cast_to = Vector2( 0, 41.7014 )
 
 [node name="Celling" type="Node2D" parent="."]
 
@@ -66,44 +66,44 @@ position = Vector2( 216, 232 )
 [node name="Left" type="Node2D" parent="Wall"]
 
 [node name="Top" type="RayCast2D" parent="Wall/Left"]
-position = Vector2( 184, 112 )
+position = Vector2( 184, 117 )
 scale = Vector2( 1, 10 )
 enabled = true
-cast_to = Vector2( -24, 0 )
+cast_to = Vector2( -25, 0 )
 
 [node name="Center" type="RayCast2D" parent="Wall/Left"]
 position = Vector2( 184, 152 )
 scale = Vector2( 1, 10 )
 enabled = true
-cast_to = Vector2( -24, 0 )
+cast_to = Vector2( -26, 0 )
 
 [node name="Bottom" type="RayCast2D" parent="Wall/Left"]
-position = Vector2( 184, 184 )
+position = Vector2( 184, 187 )
 scale = Vector2( 1, 10 )
 enabled = true
-cast_to = Vector2( -24, 0 )
+cast_to = Vector2( -26, 0 )
 
 [node name="Right" type="Node2D" parent="Wall"]
 position = Vector2( 400, 296 )
 rotation = 3.14159
 
 [node name="Top" type="RayCast2D" parent="Wall/Right"]
-position = Vector2( 184, 112 )
+position = Vector2( 184, 109 )
 scale = Vector2( 1, 10 )
 enabled = true
-cast_to = Vector2( -24.0003, 4.19617e-05 )
+cast_to = Vector2( -25.0003, 4.19617e-05 )
 
 [node name="Center" type="RayCast2D" parent="Wall/Right"]
 position = Vector2( 184, 152 )
 scale = Vector2( 1, 10 )
 enabled = true
-cast_to = Vector2( -24.0004, 4.19617e-05 )
+cast_to = Vector2( -25.0004, 4.19617e-05 )
 
 [node name="Bottom" type="RayCast2D" parent="Wall/Right"]
-position = Vector2( 184, 184 )
+position = Vector2( 184, 179 )
 scale = Vector2( 1, 10 )
 enabled = true
-cast_to = Vector2( -24.0005, 4.57764e-05 )
+cast_to = Vector2( -25.0006, 4.57764e-05 )
 
 [node name="AttackRight" type="Area2D" parent="."]
 visible = false
@@ -136,9 +136,16 @@ build_mode = 1
 polygon = PoolVector2Array( 448, 312, 480, 312, 512, 368, 504, 432, 485.6, 461.6, 453.6, 461.6, 472, 392, 472, 336 )
 
 [node name="AttackTimer1" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="AttackCool" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="AttackInt" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="timeout" from="AttackTimer1" to="." method="_on_AttackTimer1_timeout"]
 [connection signal="timeout" from="AttackCool" to="." method="_on_AttackCool_timeout"]
+[connection signal="timeout" from="AttackInt" to="." method="_on_AttackInt_timeout"]

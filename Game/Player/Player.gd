@@ -5,34 +5,41 @@ var gravity = 1
 var direction = 1
 
 var max_move = 4
-
+var max_attack = 3
 var current_state = "idle"
 
-var idle
-var running
 var jump_force = 20
 var max_jump = 20
-var jump = 1
-var double_jump
+var jump_num = 1
 var velocity = Vector2.ZERO
+
+var attack_num = 0
+var current_attack = 0
+var currently_attacking = false
+var attack_direction = 0
+var attack_cool = 0
 
 func _ready():
 	pass 
 
-func _physics_process(delta):
-	position.x += velocity.x
-	position.y += clamp(velocity.y,-max_jump,max_jump)
-	var down = is_on_floor()
-	var wall = touching_wall()
-	if wall == true:
-		velocity.x = 0
-	if down == false:
-		velocity.y += gravity
-	if down == true:
-		jump = 0
-		velocity.y = 0
+func _process(_delta):
+	if is_on_floor() == true:
+		jump_num = 0
+		velocity.y = clamp(velocity.y,-max_jump,0)
 	velocity.x = clamp(velocity.x,-max_move,max_move)
-	
+	if touching_celling():
+		velocity.y = clamp(velocity.y, 0, jump_force)
+	if touching_wall():
+		if touching_wall_left():
+			velocity.x = clamp(velocity.x,0,max_move)
+		if touching_wall_right():
+			velocity.x = clamp(velocity.x,-max_move,0)
+	position.x += velocity.x
+	position.y += clamp(velocity.y,-max_jump/2,max_jump)
+
+func _physics_process(_delta):
+	if is_on_floor() == false:
+		velocity.y += gravity
 		
 	if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
 		idle()
@@ -45,20 +52,59 @@ func _physics_process(delta):
 		direction = -1
 		running()
 	
-	if Input.is_action_pressed("Jump"):
-		if jump == 0:
+	if Input.is_action_just_pressed("Jump"):
+		if jump_num == 0:
 			jump()
 	
 	if Input.is_action_just_pressed("Jump") and not is_on_floor():
-		if jump == 1:
+		if jump_num == 1:
 			velocity.y -= jump_force + velocity.y
-			jump = 2
+			jump_num = 2
 	
 	if not Input.is_action_pressed("Left") and not Input.is_action_pressed("Right"):
 		velocity.x = 0
 	
-	if touching_celling():
-		velocity.y = clamp(velocity.y, 0, jump_force)
+	if Input.is_action_just_pressed("Attack"):
+		if max_attack >= attack_num and attack_cool == 0:
+			attack_num += 1
+			Attack()
+		
+
+	
+func Attack():
+	if direction == 1 and currently_attacking == false and attack_direction != -1:
+		$AttackRight.monitoring = true
+		$AttackRight.visible = true
+		$AttackTimer1.start()
+		currently_attacking = true
+		current_attack += 1
+		attack_direction = 1
+		
+		
+	if direction == -1 and currently_attacking == false  and attack_direction != 1:
+		$AttackLeft.monitoring = true
+		$AttackLeft.visible = true
+		$AttackTimer1.start()
+		currently_attacking = true
+		current_attack += 1
+		attack_direction = -1
+	
+	
+func _on_AttackTimer1_timeout():
+	if attack_num == current_attack:
+		$AttackRight.monitoring = false
+		$AttackRight.visible = false
+		$AttackLeft.monitoring = false
+		$AttackLeft.visible = false
+		current_attack = 0
+		attack_num = 0
+		currently_attacking = false
+		attack_direction = 0
+		attack_cool = 1
+		$AttackCool.start()
+	else:
+		currently_attacking = false
+		Attack()
 
 func is_on_floor():
 	var fl = $Floor.get_children()
@@ -108,9 +154,12 @@ func running():
 
 func jump():
 	print("yes")
-	if jump == 0:
+	if jump_num == 0:
 		velocity.y -= jump_force
-		jump = 1
+		jump_num = 1
 
 func die():
 	queue_free()
+
+func _on_AttackCool_timeout():
+	attack_cool = 0

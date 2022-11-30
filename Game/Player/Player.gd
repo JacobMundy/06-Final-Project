@@ -8,8 +8,8 @@ var max_move = 9
 var max_attack = 3
 var current_state = "idle"
 
-var jump_force = 25
-var max_jump = 25
+var jump_force = 20
+var max_jump = 60
 var jump_num = 1
 var velocity = Vector2.ZERO
 
@@ -38,7 +38,7 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	position.x += velocity.x
-	position.y += clamp(velocity.y,-max_jump/2,max_jump)
+	position.y += clamp(velocity.y,-max_jump,max_jump/3)
 	if is_on_floor() == false:
 		velocity.y += gravity
 		

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 1
+var speed = 3
 var gravity = 1
 var direction = 1
 
@@ -33,7 +33,6 @@ func _physics_process(delta):
 		velocity.y = 0
 	velocity.x = clamp(velocity.x,-max_move,max_move)
 	
-		
 	if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
 		idle()
 
@@ -114,3 +113,5 @@ func jump():
 
 func die():
 	queue_free()
+
+

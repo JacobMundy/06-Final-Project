@@ -68,7 +68,30 @@ tile_data = PoolIntArray( 97, 0, 0, 65631, 0, 0, 65632, 0, 0, 65633, 0, 0, 13116
 modulate = Color( 0.839216, 0.419608, 0.141176, 1 )
 tile_set = SubResource( 2 )
 format = 1
-tile_data = PoolIntArray( -65405, 0, 0, -65404, 0, 0, -65403, 0, 0, 983063, 0, 0, 1114243, 0, 0, 1114244, 0, 0, 1114245, 0, 0, 1114246, 0, 0, 1114247, 0, 0, 1179675, 0, 0, 1245236, 0, 0, 1245237, 0, 0, 1310772, 0, 0, 1310773, 0, 0, 1572887, 0, 0, 1572925, 0, 0, 1572926, 0, 0, 1638461, 0, 0, 1638462, 0, 0, 1769499, 0, 0, 2031639, 0, 0, 2031640, 0, 0, 2031641, 0, 0, 2031642, 0, 0, 2031643, 0, 0, 2031668, 0, 0, 2031669, 0, 0, 2031670, 0, 0, 2031671, 0, 0, 2031672, 0, 0, 2031673, 0, 0, 2031674, 0, 0, 2031675, 0, 0, 2031676, 0, 0 )
+tile_data = PoolIntArray( -65405, 0, 0, -65404, 0, 0, -65403, 0, 0, 983063, 0, 0, 1114243, 0, 0, 1114244, 0, 0, 1114245, 0, 0, 1114246, 0, 0, 1114247, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1245211, 0, 0, 1245236, 0, 0, 1245237, 0, 0, 1310772, 0, 0, 1310773, 0, 0, 1572887, 0, 0, 1572888, 0, 0, 1638423, 0, 0, 1703963, 0, 0, 1769499, 0, 0, 2031639, 0, 0, 2031640, 0, 0, 2031641, 0, 0, 2031642, 0, 0, 2031643, 0, 0, 2031668, 0, 0, 2031669, 0, 0, 2031670, 0, 0, 2031671, 0, 0, 2031672, 0, 0, 2031673, 0, 0, 2031674, 0, 0, 2031675, 0, 0, 2031676, 0, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2( 4, 4 )
+
+[node name="TrapAreas" type="Area2D" parent="."]
+
+[node name="FloorTrap" type="CollisionPolygon2D" parent="TrapAreas"]
+polygon = PoolVector2Array( 1478, 1922, 1790, 1922, 1792, 2054, 1473, 2045 )
+
+[node name="WallTrap1" type="CollisionPolygon2D" parent="TrapAreas"]
+polygon = PoolVector2Array( 1462, 1531, 1599, 1531, 1599, 1598, 1536, 1601, 1536, 1661, 1462, 1665 )
+
+[node name="WallTrap2" type="CollisionPolygon2D" parent="TrapAreas"]
+polygon = PoolVector2Array( 1667, 1145, 1797, 1147, 1799, 1280, 1723, 1280, 1724, 1218, 1661, 1220 )
+
+[node name="WallTrap3" type="CollisionPolygon2D" parent="TrapAreas"]
+polygon = PoolVector2Array( 3329, 1212, 3458, 1209, 3458, 1353, 3323, 1347 )
+
+[node name="FloorTrap2" type="CollisionPolygon2D" parent="TrapAreas"]
+polygon = PoolVector2Array( 3317, 1913, 3814, 1922, 3902, 1987, 3905, 2060, 3326, 2054 )
+
+[node name="FloorSpike1" type="CollisionPolygon2D" parent="TrapAreas"]
+polygon = PoolVector2Array( 8386, 1149, 8382, 1034, 8700, 1028, 8702, 1155 )
+
+[node name="FloorSpike2" type="CollisionPolygon2D" parent="TrapAreas"]
+polygon = PoolVector2Array( 8378, 4, 8383, -134, 8577, -134, 8575, 4 )

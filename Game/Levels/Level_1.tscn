@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Levels/TrapAreas.gd" type="Script" id=3]
-[ext_resource path="res://Levels/Player_Container.gd" type="Script" id=4]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -32,6 +31,14 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="Game" type="Node2D"]
 
+[node name="Player2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -100 )
+
+[node name="Camera2D" type="Camera2D" parent="Player2"]
+position = Vector2( 425, 300 )
+current = true
+zoom = Vector2( 2, 2 )
+
 [node name="Background" type="TileMap" parent="."]
 modulate = Color( 0.152941, 0.635294, 0.215686, 1 )
 tile_set = SubResource( 2 )
@@ -49,6 +56,12 @@ modulate = Color( 0.752941, 0.0352941, 0.0352941, 1 )
 tile_set = SubResource( 2 )
 format = 1
 tile_data = PoolIntArray( -327554, 0, 0, -262018, 0, 0, -196496, 0, 0, -196482, 0, 0, -130960, 0, 0, -130946, 0, 0, -65424, 0, 0, 65606, 0, 0, 65610, 0, 0, 131142, 0, 0, 131146, 0, 0, 327715, 0, 0, 917628, 0, 0, 917632, 0, 0, 983164, 0, 0, 983168, 0, 0, 1114196, 0, 0, 1114197, 0, 0, 1179732, 0, 0, 1179733, 0, 0, 1769551, 0, 0, 1835087, 0, 0, 1900623, 0, 0, 1966159, 0, 0 )
+
+[node name="Player" type="TileMap" parent="."]
+modulate = Color( 0.152941, 0.635294, 0.215686, 1 )
+tile_set = SubResource( 2 )
+format = 1
+tile_data = PoolIntArray( 4, 0, 0, 65540, 0, 0 )
 
 [node name="Exit" type="TileMap" parent="."]
 modulate = Color( 0.156863, 0.647059, 0.219608, 1 )
@@ -69,7 +82,6 @@ format = 1
 tile_data = PoolIntArray( -65405, 0, 0, -65404, 0, 0, -65403, 0, 0, 983063, 0, 0, 1114243, 0, 0, 1114244, 0, 0, 1114245, 0, 0, 1114246, 0, 0, 1114247, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1245211, 0, 0, 1245236, 0, 0, 1245237, 0, 0, 1310772, 0, 0, 1310773, 0, 0, 1572887, 0, 0, 1572888, 0, 0, 1638423, 0, 0, 1703963, 0, 0, 1769499, 0, 0, 2031639, 0, 0, 2031640, 0, 0, 2031641, 0, 0, 2031642, 0, 0, 2031643, 0, 0, 2031668, 0, 0, 2031669, 0, 0, 2031670, 0, 0, 2031671, 0, 0, 2031672, 0, 0, 2031673, 0, 0, 2031674, 0, 0, 2031675, 0, 0, 2031676, 0, 0 )
 
 [node name="TrapAreas" type="Area2D" parent="."]
-script = ExtResource( 3 )
 
 [node name="FloorTrap" type="CollisionPolygon2D" parent="TrapAreas"]
 polygon = PoolVector2Array( 1478, 1922, 1790, 1922, 1792, 2054, 1473, 2045 )
@@ -91,9 +103,3 @@ polygon = PoolVector2Array( 8386, 1149, 8382, 1034, 8700, 1028, 8702, 1155 )
 
 [node name="FloorSpike2" type="CollisionPolygon2D" parent="TrapAreas"]
 polygon = PoolVector2Array( 8378, 4, 8383, -134, 8577, -134, 8575, 4 )
-
-[node name="Player_Container" type="Node2D" parent="."]
-position = Vector2( -126, -330 )
-script = ExtResource( 4 )
-
-[connection signal="body_entered" from="TrapAreas" to="TrapAreas" method="_on_TrapAreas_body_entered"]

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 3
+var speed = 1
 var gravity = 1
 var direction = 1
 
@@ -40,7 +40,7 @@ func _process(_delta):
 func _physics_process(_delta):
 	if is_on_floor() == false:
 		velocity.y += gravity
-
+		
 	if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
 		idle()
 
@@ -163,4 +163,3 @@ func die():
 
 func _on_AttackCool_timeout():
 	attack_cool = 0
-

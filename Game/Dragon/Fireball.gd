@@ -13,7 +13,7 @@ var points = []
 const margin = 1.5
 
 func _ready():
-	pass
+	speed = speed * randf()
 
 func _physics_process(_delta):
 	var velocity = Vector2.ZERO

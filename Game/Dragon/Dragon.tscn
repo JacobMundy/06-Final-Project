@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Dragon/Dragon.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Dragon/Line2D.gd" type="Script" id=3]
+[ext_resource path="res://Dragon/RayCast2D.gd" type="Script" id=4]
 
 [node name="Dragon" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -27,3 +29,29 @@ texture = ExtResource( 2 )
 position = Vector2( 0, -16 )
 scale = Vector2( 3, 2.5 )
 polygon = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32, 31, -32 )
+
+[node name="Laser" type="Line2D" parent="."]
+visible = false
+default_color = Color( 0.4, 1, 1, 1 )
+script = ExtResource( 3 )
+
+[node name="LaserTimer" type="Timer" parent="Laser"]
+one_shot = true
+
+[node name="ShootingTimer" type="Timer" parent="Laser"]
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="Laser"]
+scale = Vector2( 3, 1 )
+enabled = true
+collision_mask = 512
+collide_with_areas = true
+script = ExtResource( 4 )
+
+[node name="WeaponTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Laser/LaserTimer" to="Laser" method="_on_LaserTimer_timeout"]
+[connection signal="timeout" from="Laser/ShootingTimer" to="." method="_on_ShootingTimer_timeout"]
+[connection signal="timeout" from="Laser/ShootingTimer" to="Laser" method="_on_ShootingTimer_timeout"]
+[connection signal="timeout" from="WeaponTimer" to="." method="_on_WeaponTimer_timeout"]

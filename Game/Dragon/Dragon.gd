@@ -6,18 +6,31 @@ var shield_on = true
 
 var health = 3
 
+var weapon_start = false
 func _ready():
 	randomize()
 	rand_pos()
 
 func _physics_process(_delta):
-	var rand = randi()%60
-	if rand == 1:
-		fireball(3)
+	var rand = randi()%30
+	if rand == 1 and weapon_start == false:
+		weapon_start = true
+		fireball()
 
-func fireball(d):
-	for n in d:
-		Global.summon_fireball()
+	if rand == 2 and weapon_start == false:
+		weapon_start = true
+		laser()
+
+func laser():
+	$Laser.start()
+
+func fireball():
+	Global.summon_fireball()
+	Global.summon_fireball()
+	Global.summon_fireball()
+	$WeaponTimer.start()
+	
+
 func rand_pos():
 	var rand = randi()%5
 	position = start_pos[rand]
@@ -45,3 +58,12 @@ func damage():
 	$Shield.modulate.a = $Shield.modulate.a*8
 	if health == 0:
 		queue_free()
+
+
+
+
+func _on_ShootingTimer_timeout():
+	$WeaponTimer.start()
+
+func _on_WeaponTimer_timeout():
+	weapon_start = false

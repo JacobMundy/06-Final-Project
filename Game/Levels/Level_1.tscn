@@ -245,9 +245,16 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [node name="Game" type="Node2D"]
 
 [node name="Background" type="TileMap" parent="."]
-modulate = Color( 0.152941, 0.635294, 0.215686, 1 )
+modulate = Color( 0.356863, 0.690196, 0.854902, 1 )
 tile_set = SubResource( 2 )
 format = 1
+tile_data = PoolIntArray( 2031869, 1, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_left = -2989.0
+margin_top = -3193.0
+margin_right = 12635.0
+margin_bottom = 4289.0
 
 [node name="World" type="TileMap" parent="."]
 tile_set = SubResource( 2 )

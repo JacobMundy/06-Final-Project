@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://BreakableWall.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Exits.gd" type="Script" id=5]
 [ext_resource path="res://Arrow_Container.gd" type="Script" id=6]
 [ext_resource path="res://Assets/World/goodly-2x.png" type="Texture" id=7]
+[ext_resource path="res://Levels/Enemy_Container.gd" type="Script" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -242,6 +243,11 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 } ]
 6/z_index = 0
 
+[sub_resource type="NavigationPolygon" id=13]
+vertices = PoolVector2Array( 5272, 1950, 5291, 2020, 5196, 2007, 5183, 1957, 10130, -92, 10032, -92, 10059, -254, 10406, -788, 9978, -326, 6564, 1925, 6564, 2102, 6520, 2096, 6533, 1912, 1548, -1423, 10490, -1399, 9888, -335, 9798, -92, 9250, -137, 8757, -200, 8703, -84, 7760, -119, 7688, -30, 7006, -92, 3179, 319, 3179, 383, 3073, 369, 3065, 251, 6646, 1678, 6457, 1856, 6287, 51, 10166, 186, 10121, 590, 9987, 913, 9215, 770, 3944, 368, 3397, 386, 3265, 372, 3276, 312, 4419, 177, 9655, 931, 9655, 1021, 9286, 1003, 9286, 841, 6082, 2026, 5576, 2039, 5576, 1957, 6317, 1919, 3005, 240, 3005, 322, 1729, 312, 3455, 1216, 3392, 1216, 6316, 2102, 6082, 2102, 4335, 1906, 4335, 1969, 3398, 1982, 3944, 1862, 4052, 1849, 3380, 1362, 3468, 1356, 4140, 381, 6020, 368, 6729, 1014, 6729, 1235, 6387, 1856, 9071, 868, 9053, 1003, 6943, 922, 4848, 1912, 9125, 779, 6018, 177, 6260, -75, 7167, -21, 6673, -30, 5031, 1963 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 7, 6, 8 ), PoolIntArray( 9, 10, 11, 12 ), PoolIntArray( 13, 14, 7, 8, 15 ), PoolIntArray( 13, 15, 16, 17, 18 ), PoolIntArray( 13, 18, 19, 20 ), PoolIntArray( 13, 20, 21, 22 ), PoolIntArray( 23, 24, 25, 26 ), PoolIntArray( 27, 9, 12, 28 ), PoolIntArray( 29, 30, 31, 32, 33 ), PoolIntArray( 34, 35, 36, 37, 38 ), PoolIntArray( 39, 40, 41, 42 ), PoolIntArray( 43, 44, 45, 46 ), PoolIntArray( 47, 48, 49, 13 ), PoolIntArray( 50, 51, 35, 34 ), PoolIntArray( 52, 53, 43, 46 ), PoolIntArray( 54, 55, 56, 57, 58 ), PoolIntArray( 56, 59, 60, 57 ), PoolIntArray( 58, 61, 62, 63, 64, 27, 28, 65 ), PoolIntArray( 66, 67, 68 ), PoolIntArray( 58, 65, 46, 45, 69 ), PoolIntArray( 70, 66, 68, 71, 29 ), PoolIntArray( 26, 47, 13 ), PoolIntArray( 37, 23, 26, 13, 72, 38 ), PoolIntArray( 39, 42, 33, 32 ), PoolIntArray( 21, 73, 22 ), PoolIntArray( 13, 22, 74, 72 ), PoolIntArray( 29, 33, 70 ), PoolIntArray( 72, 29, 71, 38 ), PoolIntArray( 50, 34, 57, 60 ), PoolIntArray( 3, 75, 69, 0 ), PoolIntArray( 69, 54, 58 ), PoolIntArray( 69, 45, 0 ) ]
+outlines = [ PoolVector2Array( 1729, 312, 3005, 322, 3005, 240, 3065, 251, 3073, 369, 3179, 383, 3179, 319, 3276, 312, 3265, 372, 3397, 386, 3392, 1216, 3455, 1216, 3468, 1356, 3380, 1362, 3398, 1982, 4335, 1969, 4335, 1906, 4848, 1912, 5031, 1963, 5183, 1957, 5196, 2007, 5291, 2020, 5272, 1950, 5576, 1957, 5576, 2039, 6082, 2026, 6082, 2102, 6316, 2102, 6317, 1919, 6387, 1856, 6457, 1856, 6533, 1912, 6520, 2096, 6564, 2102, 6564, 1925, 6646, 1678, 6729, 1235, 6729, 1014, 6020, 368, 4140, 381, 4052, 1849, 3944, 1862, 3944, 368, 4419, 177, 6018, 177, 6943, 922, 9053, 1003, 9071, 868, 9125, 779, 9215, 770, 9286, 841, 9286, 1003, 9655, 1021, 9655, 931, 9987, 913, 10121, 590, 10166, 186, 6287, 51, 6260, -75, 6673, -30, 7006, -92, 7167, -21, 7688, -30, 7760, -119, 8703, -84, 8757, -200, 9250, -137, 9798, -92, 9888, -335, 9978, -326, 10059, -254, 10032, -92, 10130, -92, 10406, -788, 10490, -1399, 1548, -1423 ) ]
+
 [node name="Game" type="Node2D"]
 
 [node name="Background" type="TileMap" parent="."]
@@ -272,7 +278,7 @@ tile_data = PoolIntArray( -2228058, 3, 0, -2162522, 3, 0, -2096986, 3, 0, -20314
 modulate = Color( 0.752941, 0.0352941, 0.0352941, 1 )
 tile_set = SubResource( 2 )
 format = 1
-tile_data = PoolIntArray( -327554, 0, 0, -262018, 0, 0, -196496, 0, 0, -196482, 0, 0, -130960, 0, 0, -130946, 0, 0, -65424, 0, 0, 65606, 0, 0, 65610, 0, 0, 131142, 0, 0, 131146, 0, 0, 327715, 0, 0, 917628, 0, 0, 917632, 0, 0, 983164, 0, 0, 983168, 0, 0, 1114196, 0, 0, 1114197, 0, 0, 1179732, 0, 0, 1179733, 0, 0, 1769551, 0, 0, 1835087, 0, 0, 1900623, 0, 0, 1966159, 0, 0 )
+tile_data = PoolIntArray( -327554, 0, 0, -262018, 0, 0, -196496, 0, 0, -196482, 0, 0, -130960, 0, 0, -130946, 0, 0, -65424, 0, 0, 65606, 0, 0, 65610, 0, 0, 131142, 0, 0, 131146, 0, 0, 327715, 0, 0, 917628, 0, 0, 917632, 0, 0, 983164, 0, 0, 983168, 0, 0, 1769551, 0, 0, 1835087, 0, 0, 1900623, 0, 0, 1966159, 0, 0 )
 
 [node name="Exit" type="TileMap" parent="."]
 modulate = Color( 0.156863, 0.647059, 0.219608, 1 )
@@ -339,6 +345,14 @@ script = ExtResource( 3 )
 
 [node name="Arrow_Container" type="Node2D" parent="."]
 script = ExtResource( 6 )
+
+[node name="Enemy_Container" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 13 )
 
 [connection signal="body_entered" from="TrapAreas" to="TrapAreas" method="_on_TrapAreas_body_entered"]
 [connection signal="body_entered" from="Exits" to="Exits" method="_on_Exits_body_entered"]

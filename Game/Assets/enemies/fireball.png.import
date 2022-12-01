@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spritesheet-2.png-ec39aebae3331f51019e3c69a8a334d9.stex"
+path="res://.import/fireball.png-15e772f23561edda9ca39443de4a5293.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/spritesheet-2.png"
-dest_files=[ "res://.import/spritesheet-2.png-ec39aebae3331f51019e3c69a8a334d9.stex" ]
+source_file="res://Assets/enemies/fireball.png"
+dest_files=[ "res://.import/fireball.png-15e772f23561edda9ca39443de4a5293.stex" ]
 
 [params]
 

@@ -57,7 +57,7 @@ func damage():
 	shield_health = 3
 	$Shield.modulate.a = $Shield.modulate.a*8
 	if health == 0:
-		queue_free()
+		$Sprite.animation = "death"
 
 
 
@@ -67,3 +67,7 @@ func _on_ShootingTimer_timeout():
 
 func _on_WeaponTimer_timeout():
 	weapon_start = false
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "death":
+		queue_free()

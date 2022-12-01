@@ -19,3 +19,11 @@ func get_position():
 	var Player = get_node_or_null("/root/Game/Player_Container/Player/Sprite")
 	position = Player.global_position
 	return position
+
+func shield_hit():
+	var Shield = get_node_or_null("/root/Game/Dragon")
+	Shield.shield_hit()
+
+func damage():
+	var Dragon = get_node_or_null("/root/Game/Dragon")
+	Dragon.damage()

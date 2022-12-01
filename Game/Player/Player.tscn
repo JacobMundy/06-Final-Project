@@ -208,6 +208,8 @@ margin_right = 121.0
 margin_bottom = 132.5
 text = "Quit"
 
+[connection signal="body_entered" from="AttackRight" to="." method="_on_AttackRight_body_entered"]
+[connection signal="body_entered" from="AttackLeft" to="." method="_on_AttackLeft_body_entered"]
 [connection signal="timeout" from="AttackTimer1" to="." method="_on_AttackTimer1_timeout"]
 [connection signal="timeout" from="AttackCool" to="." method="_on_AttackCool_timeout"]
 [connection signal="timeout" from="AttackInt" to="." method="_on_AttackInt_timeout"]

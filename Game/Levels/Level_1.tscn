@@ -5,7 +5,7 @@
 [ext_resource path="res://Player_Container.gd" type="Script" id=3]
 [ext_resource path="res://TrapAreas.gd" type="Script" id=4]
 [ext_resource path="res://Exits.gd" type="Script" id=5]
-[ext_resource path="res://Levels/Arrow_Container.gd" type="Script" id=6]
+[ext_resource path="res://Arrow_Container.gd" type="Script" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )

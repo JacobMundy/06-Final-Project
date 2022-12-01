@@ -202,3 +202,13 @@ func jump():
 
 func die():
 	queue_free()
+
+
+func _on_AttackRight_body_entered(body):
+	if body.name == "Shield":
+		Global.shield_hit()
+
+
+func _on_AttackLeft_body_entered(body):
+	if body.name == "Shield":
+		Global.shield_hit()

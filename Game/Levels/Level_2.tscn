@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Killbox.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -30,6 +30,20 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 } ]
 0/z_index = 0
 
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+onready var Arrow = load(\"res://Arrow/Arrow.tscn\")
+
+func _ready():
+	pass
+
+
+func create_arrow():
+	print(1)
+	var arrow = Arrow.instance()
+	add_child(arrow)
+"
+
 [node name="Game" type="Node2D"]
 
 [node name="World" type="TileMap" parent="."]
@@ -42,6 +56,9 @@ tile_data = PoolIntArray( -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 
 [node name="Player_Container" type="Node2D" parent="."]
 position = Vector2( -136, -332 )
 script = ExtResource( 3 )
+
+[node name="Arrow_Container" type="Node2D" parent="."]
+script = SubResource( 3 )
 
 [node name="Killbox" type="Area2D" parent="."]
 script = ExtResource( 1 )

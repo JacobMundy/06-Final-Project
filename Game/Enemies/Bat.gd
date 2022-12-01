@@ -40,15 +40,15 @@ func _physics_process(_delta):
 			move_and_slide(velocity, Vector2(0,0))
 		update()
 
-func _draw():
-	var c = looking_color
-	if line_of_sight:
-		c = los_color
-	if points.size() > 1:
-		var prev_point = get_global_position()
-		for p in points:
-			draw_line(p - get_global_position(), prev_point - get_global_position(), c, 2)
-			prev_point = p
+#func _draw():
+#	var c = looking_color
+#	if line_of_sight:
+#		c = los_color
+#	if points.size() > 1:
+#		var prev_point = get_global_position()
+#		for p in points:
+#			draw_line(p - get_global_position(), prev_point - get_global_position(), c, 2)
+#			prev_point = p
 
 func _on_Area2D_body_entered(body):
 	if body.name == 'Player':

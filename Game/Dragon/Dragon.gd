@@ -10,6 +10,14 @@ func _ready():
 	randomize()
 	rand_pos()
 
+func _physics_process(_delta):
+	var rand = randi()%60
+	if rand == 1:
+		fireball(3)
+
+func fireball(d):
+	for n in d:
+		Global.summon_fireball()
 func rand_pos():
 	var rand = randi()%5
 	position = start_pos[rand]

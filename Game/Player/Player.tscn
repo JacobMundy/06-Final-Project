@@ -9,16 +9,17 @@ collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 416, 384 )
+position = Vector2( 0, 4 )
 scale = Vector2( 1, 2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 416, 384.8 )
-scale = Vector2( 1, 2.01562 )
-polygon = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32, 31, -32 )
+position = Vector2( 8, 4.76837e-07 )
+scale = Vector2( 1.11111, 2.01562 )
+polygon = PoolVector2Array( -28.8, 27.783, -28.8, -27.783, 14.4, -27.783, 14.4, 27.783 )
 
 [node name="Floor" type="Node2D" parent="."]
+position = Vector2( -416, -380 )
 
 [node name="Left" type="RayCast2D" parent="Floor"]
 position = Vector2( 392, 408 )
@@ -39,6 +40,7 @@ enabled = true
 cast_to = Vector2( 0, 41.7014 )
 
 [node name="Celling" type="Node2D" parent="."]
+position = Vector2( -416, -380 )
 
 [node name="Left" type="RayCast2D" parent="Celling"]
 position = Vector2( 392, 358 )
@@ -62,7 +64,7 @@ enabled = true
 cast_to = Vector2( 0, 46 )
 
 [node name="Wall" type="Node2D" parent="."]
-position = Vector2( 216, 232 )
+position = Vector2( -200, -148 )
 
 [node name="Left" type="Node2D" parent="Wall"]
 
@@ -104,10 +106,11 @@ cast_to = Vector2( -25.0004, 4.19617e-05 )
 position = Vector2( 184, 179 )
 scale = Vector2( 1, 10 )
 enabled = true
-cast_to = Vector2( -25.0006, 4.57764e-05 )
+cast_to = Vector2( -24.0005, 0.100041 )
 
 [node name="AttackRight" type="Area2D" parent="."]
 visible = false
+position = Vector2( -416, -380 )
 monitoring = false
 
 [node name="ColorRect" type="ColorRect" parent="AttackRight"]
@@ -122,6 +125,7 @@ polygon = PoolVector2Array( 448, 304, 480, 304, 512, 368, 504, 432, 456, 464, 44
 
 [node name="AttackLeft" type="Area2D" parent="."]
 visible = false
+position = Vector2( -416, -380 )
 rotation = 3.14159
 monitoring = false
 
@@ -153,17 +157,16 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 416, 380 )
 current = true
 zoom = Vector2( 2, 2 )
 
 [node name="Pause_Menu" type="Control" parent="."]
 pause_mode = 2
 visible = false
-margin_left = -602.0
-margin_top = -218.0
-margin_right = 1441.0
-margin_bottom = 978.0
+margin_left = -1024.0
+margin_top = -592.0
+margin_right = 1019.0
+margin_bottom = 604.0
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="Pause_Menu"]

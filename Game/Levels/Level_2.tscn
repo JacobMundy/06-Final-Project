@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Killbox.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Player_Container.gd" type="Script" id=3]
 [ext_resource path="res://Dragon/Dragon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Dragon/Fireball_Container.gd" type="Script" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -45,6 +46,11 @@ func create_arrow():
 	add_child(arrow)
 "
 
+[sub_resource type="NavigationPolygon" id=4]
+vertices = PoolVector2Array( 1472, -512, 1472, 952, 960, 384, 960, 320, 640, 64, 640, 0, 576, 320, 320, 64, 256, -192, 256, -256, 320, 0, -256, 256, -192, 0, 0, -192, -256, 320, -192, -64, -952, -504, 0, -256, 384, 384, -64, 384, -448, 0, -704, 256, -704, 320, -640, 320, -640, 384, -960, 960, -512, 384, -512, 512, -448, 512, -448, 704, -384, 704, -384, 768, -320, 768, -320, 320, -64, 448, 384, 448, 576, 448, 320, 704, 64, 448, 64, 512, 192, 512, 192, 640, 256, 640, 256, 704, 320, 448, 640, 448, 640, 704, 704, 704, 704, 640, 768, 640, 832, 576, 832, 384, 768, 576, -448, -64 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 0, 3, 4, 5 ), PoolIntArray( 4, 3, 6, 7 ), PoolIntArray( 8, 9, 0, 5, 10 ), PoolIntArray( 11, 12, 13, 8, 10, 7, 14 ), PoolIntArray( 13, 12, 15 ), PoolIntArray( 16, 0, 9, 17 ), PoolIntArray( 14, 7, 6, 18, 19 ), PoolIntArray( 20, 12, 11, 21 ), PoolIntArray( 22, 23, 24, 25 ), PoolIntArray( 24, 26, 27, 25 ), PoolIntArray( 27, 28, 29, 25 ), PoolIntArray( 29, 30, 31, 25 ), PoolIntArray( 32, 33, 14, 19, 34 ), PoolIntArray( 35, 6, 36, 37 ), PoolIntArray( 6, 35, 18 ), PoolIntArray( 34, 38, 39, 32 ), PoolIntArray( 39, 40, 41, 32 ), PoolIntArray( 41, 42, 43, 25, 32 ), PoolIntArray( 37, 44, 35 ), PoolIntArray( 36, 45, 46, 37 ), PoolIntArray( 47, 48, 49, 1 ), PoolIntArray( 50, 51, 2, 1 ), PoolIntArray( 49, 52, 50, 1 ), PoolIntArray( 16, 17, 13, 15, 53 ), PoolIntArray( 47, 1, 25, 46 ), PoolIntArray( 37, 46, 25 ), PoolIntArray( 43, 37, 25 ), PoolIntArray( 31, 32, 25 ), PoolIntArray( 22, 25, 16, 21 ), PoolIntArray( 21, 16, 53, 20 ) ]
+outlines = [ PoolVector2Array( -952, -504, -960, 960, 1472, 952, 1472, -512 ), PoolVector2Array( -448, -64, -448, 0, -192, 0, -192, -64 ), PoolVector2Array( -704, 256, -256, 256, -256, 320, -320, 320, -320, 768, -384, 768, -384, 704, -448, 704, -448, 512, -512, 512, -512, 384, -640, 384, -640, 320, -704, 320 ), PoolVector2Array( -64, 384, 384, 384, 384, 448, 320, 448, 320, 704, 256, 704, 256, 640, 192, 640, 192, 512, 64, 512, 64, 448, -64, 448 ), PoolVector2Array( 576, 320, 576, 448, 640, 448, 640, 704, 704, 704, 704, 640, 768, 640, 768, 576, 832, 576, 832, 384, 960, 384, 960, 320 ), PoolVector2Array( 320, 0, 640, 0, 640, 64, 320, 64 ), PoolVector2Array( 0, -256, 256, -256, 256, -192, 0, -192 ) ]
+
 [node name="Game" type="Node2D"]
 
 [node name="World" type="TileMap" parent="."]
@@ -63,16 +69,18 @@ script = SubResource( 3 )
 
 [node name="Dragon" parent="." instance=ExtResource( 4 )]
 
+[node name="Fireball_Container" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
 [node name="Killbox" type="Area2D" parent="."]
 script = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Killbox"]
 polygon = PoolVector2Array( -3989, 988, 4304, 937, 4298, 1496, -4077, 1560, -4090, 976 )
 
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( 575.982, -64 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 4 )
 
 [connection signal="body_entered" from="Killbox" to="Killbox" method="_on_Killbox_body_entered"]

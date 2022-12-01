@@ -27,3 +27,7 @@ func shield_hit():
 func damage():
 	var Dragon = get_node_or_null("/root/Game/Dragon")
 	Dragon.damage()
+	
+func summon_fireball():
+	var Fireball = get_node_or_null("/root/Game/Fireball_Container")
+	Fireball.summon_fireball()

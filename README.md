@@ -22,5 +22,5 @@ https://opengameart.org/content/platformer-tilesets
 
 ## Future Development
 
-# Created by: Group Name
-List of group members (and contributions)
+# Created by: Phantasm Tech
+Elijah Clark, Jinzhi Wang, Jacob Mundy 

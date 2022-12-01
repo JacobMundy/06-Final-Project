@@ -12,7 +12,7 @@ func _ready():
 	rand_pos()
 
 func _physics_process(_delta):
-	var rand = randi()%30
+	var rand = randi()%60
 	if rand == 1 and weapon_start == false:
 		weapon_start = true
 		fireball()

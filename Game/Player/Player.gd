@@ -118,19 +118,22 @@ func Attack():
 		print(4)
 	
 func _on_AttackInt_timeout():
-#	print("yes")
 	if attack_direction == 1:
 		$AttackRight.monitoring = true
+		$AttackRight.monitorable = true
 		$AttackRight.visible = true
 	elif attack_direction == -1:
 		$AttackLeft.monitoring = true
+		$AttackLeft.monitorable = true
 		$AttackLeft.visible = true
 
 func _on_AttackTimer1_timeout():
 	if attack_num == current_attack:
 		$AttackRight.monitoring = false
+		$AttackRight.monitorable = false
 		$AttackRight.visible = false
 		$AttackLeft.monitoring = false
+		$AttackLeft.monitorable = false
 		$AttackLeft.visible = false
 		current_attack = 0
 		attack_num = 0
@@ -140,8 +143,10 @@ func _on_AttackTimer1_timeout():
 		$AttackCool.start()
 	else:
 		$AttackRight.monitoring = false
+		$AttackRight.monitorable = false
 		$AttackRight.visible = false
 		$AttackLeft.monitoring = false
+		$AttackLeft.monitorable = false
 		$AttackLeft.visible = false
 		currently_attacking = false
 		Attack()

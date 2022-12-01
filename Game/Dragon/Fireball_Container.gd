@@ -9,3 +9,8 @@ func summon_fireball():
 	var Dragon = get_node_or_null("/root/Game/Dragon")
 	fireball.position = Dragon.position
 	fireball.name = 'Fireball'
+
+func die():
+	var children = get_children()
+	for n in children:
+		n.die()

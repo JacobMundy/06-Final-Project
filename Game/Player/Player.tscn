@@ -121,7 +121,10 @@ cast_to = Vector2( -24.0005, 0.100041 )
 [node name="AttackRight" type="Area2D" parent="."]
 visible = false
 position = Vector2( -416, -380 )
+collision_layer = 513
+collision_mask = 513
 monitoring = false
+monitorable = false
 
 [node name="ColorRect" type="ColorRect" parent="AttackRight"]
 margin_left = 456.0
@@ -131,13 +134,16 @@ margin_bottom = 456.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackRight"]
 build_mode = 1
-polygon = PoolVector2Array( 448, 304, 480, 304, 512, 368, 504, 432, 456, 464, 440, 464, 472, 392, 472, 336 )
+polygon = PoolVector2Array( 448, 304, 496, 300, 512, 348, 512, 428, 488, 468, 440, 464, 472, 392, 472, 336 )
 
 [node name="AttackLeft" type="Area2D" parent="."]
 visible = false
 position = Vector2( -416, -380 )
 rotation = 3.14159
+collision_layer = 513
+collision_mask = 513
 monitoring = false
+monitorable = false
 
 [node name="ColorRect" type="ColorRect" parent="AttackLeft"]
 margin_left = -373.6
@@ -148,7 +154,7 @@ margin_bottom = -309.6
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackLeft"]
 position = Vector2( -829.6, -765.6 )
 build_mode = 1
-polygon = PoolVector2Array( 448, 312, 480, 312, 512, 368, 504, 432, 485.6, 461.6, 453.6, 461.6, 472, 392, 472, 336 )
+polygon = PoolVector2Array( 448, 312, 501.601, 313.599, 517.601, 369.599, 517.601, 425.599, 485.601, 465.599, 453.6, 461.6, 472, 392, 472, 336 )
 
 [node name="AttackTimer1" type="Timer" parent="."]
 wait_time = 0.5

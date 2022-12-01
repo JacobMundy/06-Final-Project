@@ -40,14 +40,18 @@ func _physics_process(_delta):
 
 
 func _on_Area2D_body_entered(body):
-	print(body.name)
 	if body.name == 'Player':
+		print("yes")
 		body.die()
-		die()
+		var Parent = get_node_or_null("/root/Game/Fireball_Container")
+		Parent.die()
 		
 func die():
 	queue_free()
 
 
+
 func _on_Area2D_area_entered(area):
-	print(area)
+	print(area.name)
+	if area.name == "AttackRight" or area.name == "AttackLeft":
+		die() 

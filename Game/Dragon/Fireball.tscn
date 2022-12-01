@@ -19,12 +19,11 @@ enabled = true
 collision_mask = 2
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
+collision_layer = 512
+collision_mask = 514
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32, 31, -32 )
+polygon = PoolVector2Array( 40, 40, -40, 40, -40, -40, 40, -40 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

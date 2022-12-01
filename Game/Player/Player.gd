@@ -8,7 +8,6 @@ var direction = 1
 
 var max_move = 9
 var max_attack = 3
-var current_state = "idle"
 
 var jump_force = 20
 var max_jump = 60
@@ -20,6 +19,8 @@ var current_attack = 0
 var currently_attacking = false
 var attack_direction = 0
 var attack_cool = 0
+
+var jump_ani = false
 
 var ArrowShot = false
 
@@ -41,19 +42,31 @@ func _process(_delta):
 			velocity.x = clamp(velocity.x,-max_move,0)
 
 func _physics_process(_delta):
-	position.x += velocity.x
+	if direction == -1 and not currently_attacking:
+		$Sprite.set_flip_h(true)
+	if direction == 1 and not currently_attacking:
+		$Sprite.set_flip_h(false)
+	position.x += velocity.x 
 	position.y += clamp(velocity.y,-max_jump,max_jump/3)
+	if velocity == Vector2.ZERO and $Sprite.animation != "idle" and $Sprite.animation != "attack":
+		$Sprite.animation = "idle"
 	if is_on_floor() == false:
 		velocity.y += gravity
-		
+	if is_on_floor() == false and jump_ani == false and $Sprite.animation != "attack":
+		$Sprite.animation = "falling"
+		velocity.y += gravity
 	if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
 		idle()
 
 	if Input.is_action_pressed("Right"):
 		direction = 1
+		if $Sprite.animation != "running" and is_on_floor() and $Sprite.animation != "attack":
+			$Sprite.animation = "running"
 		running()
 	
 	if Input.is_action_pressed("Left"):
+		if $Sprite.animation != "running" and is_on_floor() and $Sprite.animation != "attack":
+			$Sprite.animation = "running"
 		direction = -1
 		running()
 	
@@ -91,6 +104,7 @@ func Attack():
 		attack_direction = 1
 		$AttackTimer1.start()
 		$AttackInt.start()
+		$Sprite.animation = "attack"
 		currently_attacking = true
 		current_attack += 1
 		print(1)
@@ -98,6 +112,7 @@ func Attack():
 	if currently_attacking == false and attack_direction == -1:
 		$AttackTimer1.start()
 		$AttackInt.start()
+		$Sprite.animation = "attack"
 		currently_attacking = true
 		current_attack += 1
 		print(2)
@@ -106,6 +121,7 @@ func Attack():
 		attack_direction = -1
 		$AttackTimer1.start()
 		$AttackInt.start()
+		$Sprite.animation = "attack"
 		currently_attacking = true
 		current_attack += 1
 		print(3)
@@ -113,6 +129,7 @@ func Attack():
 	if currently_attacking == false and attack_direction == 1:
 		$AttackTimer1.start()
 		$AttackInt.start()
+		$Sprite.animation = "attack"
 		currently_attacking = true
 		current_attack += 1
 		print(4)
@@ -121,33 +138,28 @@ func _on_AttackInt_timeout():
 	if attack_direction == 1:
 		$AttackRight.monitoring = true
 		$AttackRight.monitorable = true
-		$AttackRight.visible = true
 	elif attack_direction == -1:
 		$AttackLeft.monitoring = true
 		$AttackLeft.monitorable = true
-		$AttackLeft.visible = true
 
 func _on_AttackTimer1_timeout():
 	if attack_num == current_attack:
 		$AttackRight.monitoring = false
 		$AttackRight.monitorable = false
-		$AttackRight.visible = false
 		$AttackLeft.monitoring = false
 		$AttackLeft.monitorable = false
-		$AttackLeft.visible = false
 		current_attack = 0
 		attack_num = 0
 		currently_attacking = false
 		attack_direction = 0
 		attack_cool = 1
 		$AttackCool.start()
+		$Sprite.animation = "idle"
 	else:
 		$AttackRight.monitoring = false
 		$AttackRight.monitorable = false
-		$AttackRight.visible = false
 		$AttackLeft.monitoring = false
 		$AttackLeft.monitorable = false
-		$AttackLeft.visible = false
 		currently_attacking = false
 		Attack()
 
@@ -202,6 +214,10 @@ func running():
 
 func jump():
 	if jump_num == 0:
+		if $Sprite.animation != "attack":
+			$Sprite.animation = "jump"
+		jump_ani = true
+		$JumpTimer.start()
 		velocity.y -= jump_force
 		jump_num = 1
 
@@ -217,3 +233,7 @@ func _on_AttackRight_body_entered(body):
 func _on_AttackLeft_body_entered(body):
 	if body.name == "Shield":
 		Global.shield_hit()
+
+
+func _on_JumpTimer_timeout():
+	jump_ani = false

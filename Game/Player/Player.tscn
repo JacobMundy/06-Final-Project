@@ -1,18 +1,173 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/spritesheet-2.png" type="Texture" id=2]
 [ext_resource path="res://Player/Pause_Menu.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1408, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1472, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1536, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1600, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1664, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1728, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1792, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1024, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1088, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 512, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 576, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 640, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 704, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 960, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 704, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 768, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 832, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1152, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1216, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1280, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1344, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "attack",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "fall_attack",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 17 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "jump",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "running",
+"speed": 10.0
+} ]
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 514
 collision_mask = 513
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 4 )
-scale = Vector2( 1, 2 )
-texture = ExtResource( 2 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -1 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 3 )
+animation = "fall"
+playing = true
 
 [node name="Player" type="Area2D" parent="."]
 collision_layer = 512
@@ -24,7 +179,7 @@ scale = Vector2( 1.11111, 2.01562 )
 polygon = PoolVector2Array( -28.8, 27.783, -28.8, -27.783, 14.4, -27.783, 14.4, 27.783 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 8, 4.76837e-07 )
+position = Vector2( 8, 0 )
 scale = Vector2( 1.11111, 2.01562 )
 polygon = PoolVector2Array( -28.8, 27.783, -28.8, -27.783, 14.4, -27.783, 14.4, 27.783 )
 
@@ -119,25 +274,19 @@ enabled = true
 cast_to = Vector2( -24.0005, 0.100041 )
 
 [node name="AttackRight" type="Area2D" parent="."]
-visible = false
 position = Vector2( -416, -380 )
 collision_layer = 513
 collision_mask = 513
 monitoring = false
 monitorable = false
 
-[node name="ColorRect" type="ColorRect" parent="AttackRight"]
-margin_left = 456.0
-margin_top = 312.0
-margin_right = 512.0
-margin_bottom = 456.0
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackRight"]
+position = Vector2( 125.444, 60 )
+scale = Vector2( 0.694444, 0.833333 )
 build_mode = 1
 polygon = PoolVector2Array( 448, 304, 496, 300, 512, 348, 512, 428, 488, 468, 440, 464, 472, 392, 472, 336 )
 
 [node name="AttackLeft" type="Area2D" parent="."]
-visible = false
 position = Vector2( -416, -380 )
 rotation = 3.14159
 collision_layer = 513
@@ -145,19 +294,14 @@ collision_mask = 513
 monitoring = false
 monitorable = false
 
-[node name="ColorRect" type="ColorRect" parent="AttackLeft"]
-margin_left = -373.6
-margin_top = -453.6
-margin_right = -317.6
-margin_bottom = -309.6
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackLeft"]
-position = Vector2( -829.6, -765.6 )
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="AttackLeft"]
+position = Vector2( -703.998, -700.002 )
+rotation = -6.28319
+scale = Vector2( 0.694444, 0.833333 )
 build_mode = 1
-polygon = PoolVector2Array( 448, 312, 501.601, 313.599, 517.601, 369.599, 517.601, 425.599, 485.601, 465.599, 453.6, 461.6, 472, 392, 472, 336 )
+polygon = PoolVector2Array( 448, 304, 496, 300, 512, 348, 512, 428, 488, 468, 440, 464, 472, 392, 472, 336 )
 
 [node name="AttackTimer1" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="AttackCool" type="Timer" parent="."]
@@ -165,11 +309,15 @@ wait_time = 0.2
 one_shot = true
 
 [node name="AttackInt" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.3
 one_shot = true
 
 [node name="ArrowTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -233,5 +381,6 @@ text = "Quit"
 [connection signal="timeout" from="AttackCool" to="." method="_on_AttackCool_timeout"]
 [connection signal="timeout" from="AttackInt" to="." method="_on_AttackInt_timeout"]
 [connection signal="timeout" from="ArrowTimer" to="." method="_on_ArrowTimer_timeout"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
 [connection signal="pressed" from="Pause_Menu/Continue" to="Pause_Menu" method="_on_Continue_pressed"]
 [connection signal="pressed" from="Pause_Menu/Quit" to="Pause_Menu" method="_on_Quit_pressed"]

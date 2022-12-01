@@ -15,6 +15,9 @@ Struggles or surprises you encountered during the development of the game
 Features
 Assets, or resources used
 
+Textures used for Tiles in game
+https://opengameart.org/content/platformer-tilesets
+
 ## References
 
 ## Future Development

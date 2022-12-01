@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+onready var Arrow = load("res://Arrow/Arrow.tscn")
+
 var speed = 4
 var gravity = 1
 var direction = 1
@@ -18,6 +20,8 @@ var current_attack = 0
 var currently_attacking = false
 var attack_direction = 0
 var attack_cool = 0
+
+var ArrowShot = false
 
 func _ready():
 	pass 
@@ -69,9 +73,19 @@ func _physics_process(_delta):
 		if max_attack > attack_num and attack_cool == 0:
 			attack_num += 1
 			Attack()
-		
+			
+	if Input.is_action_just_pressed("Shoot"):
+		if ArrowShot == false:
+			Arrow = get_node_or_null("/root/Game/Arrow_Container")
+			print(Arrow)
+			Arrow.create_arrow()
+			ArrowShot = true
+			velocity.x -= direction*200
+			$ArrowTimer.start()
 
-	
+func _on_ArrowTimer_timeout():
+	ArrowShot = false
+
 func Attack():
 	if direction == 1 and currently_attacking == false and attack_direction != -1:
 		attack_direction = 1
@@ -188,5 +202,3 @@ func jump():
 
 func die():
 	queue_free()
-
-

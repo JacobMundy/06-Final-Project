@@ -142,9 +142,14 @@ one_shot = true
 
 [node name="AttackCool" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
 
 [node name="AttackInt" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
+
+[node name="ArrowTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -206,5 +211,6 @@ text = "Quit"
 [connection signal="timeout" from="AttackTimer1" to="." method="_on_AttackTimer1_timeout"]
 [connection signal="timeout" from="AttackCool" to="." method="_on_AttackCool_timeout"]
 [connection signal="timeout" from="AttackInt" to="." method="_on_AttackInt_timeout"]
+[connection signal="timeout" from="ArrowTimer" to="." method="_on_ArrowTimer_timeout"]
 [connection signal="pressed" from="Pause_Menu/Continue" to="Pause_Menu" method="_on_Continue_pressed"]
 [connection signal="pressed" from="Pause_Menu/Quit" to="Pause_Menu" method="_on_Quit_pressed"]

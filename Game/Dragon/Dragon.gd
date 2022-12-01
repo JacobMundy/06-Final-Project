@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var start_pos = [Vector2(700,500),Vector2(300,500),Vector2(100,500),Vector2(500,500)]
+var start_pos = [Vector2(896,256),Vector2(-640,192),Vector2(-256,-128),Vector2(128,-320),Vector2(576,-64)]
 var shield_health = 3
 var shield_on = true
 
@@ -11,7 +11,7 @@ func _ready():
 	rand_pos()
 
 func rand_pos():
-	var rand = randi()%4
+	var rand = randi()%5
 	position = start_pos[rand]
 
 func shield_hit():

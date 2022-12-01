@@ -70,4 +70,6 @@ func _on_WeaponTimer_timeout():
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "death":
+		get_tree().change_scene("res://Levels/EndGame.tscn")
 		queue_free()
+		

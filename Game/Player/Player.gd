@@ -28,6 +28,7 @@ func _ready():
 	pass 
 
 func _process(_delta):
+	$Camera2D/Label.text = "Deaths:" + str(Global.deaths)
 	if is_on_floor() == true:
 		jump_num = 0
 		position.y = clamp(position.y,position.y,10000)
@@ -138,9 +139,11 @@ func _on_AttackInt_timeout():
 	if attack_direction == 1:
 		$AttackRight.monitoring = true
 		$AttackRight.monitorable = true
+		$AttackRight/Poly.disabled = false
 	elif attack_direction == -1:
 		$AttackLeft.monitoring = true
 		$AttackLeft.monitorable = true
+		$AttackLeft/Poly.disabled = false
 
 func _on_AttackTimer1_timeout():
 	if attack_num == current_attack:
@@ -148,6 +151,8 @@ func _on_AttackTimer1_timeout():
 		$AttackRight.monitorable = false
 		$AttackLeft.monitoring = false
 		$AttackLeft.monitorable = false
+		$AttackRight/Poly.disabled = true
+		$AttackLeft/Poly.disabled = true
 		current_attack = 0
 		attack_num = 0
 		currently_attacking = false
@@ -160,6 +165,8 @@ func _on_AttackTimer1_timeout():
 		$AttackRight.monitorable = false
 		$AttackLeft.monitoring = false
 		$AttackLeft.monitorable = false
+		$AttackRight/Poly.disabled = true
+		$AttackLeft/Poly.disabled = true
 		currently_attacking = false
 		Attack()
 
@@ -222,6 +229,7 @@ func jump():
 		jump_num = 1
 
 func die():
+	Global.deaths += 1 
 	queue_free()
 
 

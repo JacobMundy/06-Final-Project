@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/player/spritesheet-2.png" type="Texture" id=2]
 [ext_resource path="res://Player/Pause_Menu.gd" type="Script" id=3]
+[ext_resource path="res://Assets/accelerator.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -147,9 +148,13 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="DynamicFont" id=25]
+size = 66
+font_data = ExtResource( 4 )
+
 [node name="Player" type="KinematicBody2D"]
-collision_layer = 514
-collision_mask = 513
+collision_layer = 2570
+collision_mask = 2569
 script = ExtResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
@@ -271,11 +276,12 @@ collision_mask = 513
 monitoring = false
 monitorable = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackRight"]
+[node name="Poly" type="CollisionPolygon2D" parent="AttackRight"]
 position = Vector2( 125.444, 60 )
 scale = Vector2( 0.694444, 0.833333 )
 build_mode = 1
 polygon = PoolVector2Array( 448, 304, 496, 300, 512, 348, 512, 428, 488, 468, 440, 464, 472, 392, 472, 336 )
+disabled = true
 
 [node name="AttackLeft" type="Area2D" parent="."]
 position = Vector2( -416, -380 )
@@ -285,12 +291,13 @@ collision_mask = 513
 monitoring = false
 monitorable = false
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="AttackLeft"]
+[node name="Poly" type="CollisionPolygon2D" parent="AttackLeft"]
 position = Vector2( -703.998, -700.002 )
 rotation = -6.28319
 scale = Vector2( 0.694444, 0.833333 )
 build_mode = 1
 polygon = PoolVector2Array( 448, 304, 496, 300, 512, 348, 512, 428, 488, 468, 440, 464, 472, 392, 472, 336 )
+disabled = true
 
 [node name="AttackTimer1" type="Timer" parent="."]
 one_shot = true
@@ -314,6 +321,14 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 2, 2 )
+
+[node name="Label" type="Label" parent="Camera2D"]
+margin_left = -1004.0
+margin_top = -590.0
+margin_right = -765.0
+margin_bottom = -576.0
+custom_fonts/font = SubResource( 25 )
+text = "Deaths:"
 
 [node name="Pause_Menu" type="Control" parent="."]
 pause_mode = 2

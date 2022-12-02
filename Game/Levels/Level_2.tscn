@@ -129,10 +129,10 @@ outlines = [ PoolVector2Array( -952, -504, -960, 960, 1472, 952, 1472, -512 ), P
 [node name="Game" type="Node2D"]
 
 [node name="Sky" type="ColorRect" parent="."]
-margin_left = -4253.0
-margin_top = -1480.0
-margin_right = 7348.0
-margin_bottom = 1679.0
+margin_left = -4300.0
+margin_top = -1576.0
+margin_right = 7301.0
+margin_bottom = 1583.0
 color = Color( 0.356863, 0.690196, 0.854902, 1 )
 
 [node name="World" type="TileMap" parent="."]
